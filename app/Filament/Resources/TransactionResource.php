@@ -59,7 +59,7 @@ class TransactionResource extends Resource
                     ->trueColor('danger')
                     ->falseColor('success')
                     ->boolean(),                
-                Tables\Columns\TextColumn::make('date')
+                Tables\Columns\TextColumn::make('date_tx')
                     ->label('Tanggal')
                     ->date()
                     ->sortable(),
