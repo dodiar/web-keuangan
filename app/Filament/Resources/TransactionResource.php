@@ -47,23 +47,27 @@ class TransactionResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('category.is_expense')
-                    ->label('Pengeluaran')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('category.name')
-                    ->numeric()
+                Tables\Columns\ImageColumn::make('category.image')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('category.name')
+                    ->description(fn (Transaction $record): string => $record->name)
+                    ->label('Transaksi'),
+                Tables\Columns\IconColumn::make('category.is_expense')
+                    ->label('Tipe')
+                    ->trueIcon('heroicon-c-document-arrow-up')
+                    ->falseIcon('heroicon-c-document-arrow-down')
+                    ->trueColor('danger')
+                    ->falseColor('success')
+                    ->boolean(),                
                 Tables\Columns\TextColumn::make('date')
+                    ->label('Tanggal')
                     ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('amount')
+                    ->label('Jumlah')
                     ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('note')
-                    ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
+                    ->money('IDR', locale: 'id')
+                    ->sortable(),                            
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
