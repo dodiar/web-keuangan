@@ -29,7 +29,7 @@ class TransactionResource extends Resource
                 Forms\Components\Select::make('category_id')
                     ->relationship('category', 'name')
                     ->required(),
-                Forms\Components\DatePicker::make('date')
+                Forms\Components\DatePicker::make('date_tx')
                     ->required(),
                 Forms\Components\TextInput::make('amount')
                     ->required()
